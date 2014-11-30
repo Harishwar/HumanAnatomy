@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Make Notes</title>
+<link rel="stylesheet" type="text/css" href="css/annotorious.css"/>
+<script src="annotorious.min.js"></script>
+<script src="jquery-1.11.1.min.js"></script>
+<script src="jquery.cookie.js"></script>
+<script src="javascripts/helper.js"></script>
+    <script language="JavaScript">
+        var annotObj;
+        var annotObjs=[];
+        function annotClass(x,y,msg,userName)
+        {
+            this.x=x;
+            this.y=y;
+            this.msg=msg;
+            this.userName=userName;
+        }
+        <!--var image=document.getElementById("sample");-->
+        anno.addHandler('onAnnotationCreated',function(annotation)
+        {
+            alert(annotation.text);
+            document.addEventListener('onmouseclick',recordXYText(event,annotation));
+
+        });
+        function recordXYText(e,annotation)
+        {
+            annotObj=new annotClass(e.clientX,e.clientY,annotation.text,document.getElementById("userName").innerHTML);
+            //alert("hey"+e.clientX+""+e.clientY+""+annotation.text);
+            annotObjs.push(annotObj);
+            console.log(annotObjs);
+
+        }
+
+        function submitAnnotations()
+        {
+
+            alert(JSON.stringify(annotObjs));
+            $.ajax(
+                    {
+                        url : "/notes",
+                        type: "POST",
+                        data : annotObjs,
+                        success: function(data, textStatus, jqXHR)
+                        {
+                            alert(data);
+                            //data: data from server
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            alert(jqXHR);
+                        }
+                    });
+            //alert(annotObjs[0].msg);
+        }
+    </script>
+</head>
+<body>
+<label id="userName">userName</label>
+<img src="images/Question-Mark.jpg" width="500" height="500" alt="" class="annotatable" id="sample"/>
+<input type="submit" name="submit" id="submit" value="Submit" onClick="submitAnnotations()">
+</body>
+</html>
