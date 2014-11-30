@@ -11,21 +11,25 @@ html
         script(language="JavaScript").
             var annotObj;
             var annotObjs=[];
-            function annotClass(x,y,msg,userName)
+            function annotClass(x,y,msg,userName,width,height)
             {
             this.x=x;
             this.y=y;
             this.msg=msg;
             this.userName=userName;
+            this.width=width;
+            this.height=height;
             }
             <!--var image=document.getElementById("sample");-->
             anno.addHandler('onAnnotationCreated',function(annotation)
             {
-            document.addEventListener('onmouseclick',recordXYText(event.clientX, event.clientY,annotation));
+            document.addEventListener('onmouseclick',recordXYText(event,annotation));
             });
-            function recordXYText(clientX, clientY,annotation)
+            function recordXYText(e,annotation)
             {
-            annotObj=new annotClass(clientX,clientY,annotation.text,document.getElementById("userName").innerHTML);
+            //alert(annotation);
+            //alert(annotation.shapes[0].geometry.x);
+            annotObj=new annotClass(annotation.shapes[0].geometry.x,annotation.shapes[0].geometry.y,annotation.text,document.getElementById("userName").innerHTML,annotation.shapes[0].geometry.width,annotation.shapes[0].geometry.height);
             //alert("hey"+e.clientX+""+e.clientY+""+annotation.text);
             annotObjs.push(annotObj);
             console.log(annotObjs);
@@ -36,13 +40,13 @@ html
             xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 ) {
             if(xmlhttp.status == 200){
-            alert("Success")
+            //alert("Success"+JSON.stringify(annotObjs))
             }
             else if(xmlhttp.status == 400) {
-            alert('There was an error 400')
+            //alert('There was an error 400')
             }
             else {
-            alert('Unexpected error was returned')
+            //alert('Unexpected error was returned')
             }
             }
             }
@@ -53,31 +57,42 @@ html
             }
             function getData()
             {
+
+                //alert(xhr.responseText);
+                /*var resp=[ { x: 0.4, y: 0.3, msg: 'HIii', userName: 'userName' },{ x: 0.7, y: 0.6, msg: 'Hello', userName: 'userName' } ]
+                var jsonResponseArray=resp;
+                for(var i=0; i<jsonResponseArray.length;i++)
+                {
+                    var myAnnot={
+                        src:'http://localhost:3000/images/Question-Mark.jpg',
+                        shapes:[{type: 'rect',geometry: {width:0.3,height:0.2}}]}
+                    myAnnot.text=jsonResponseArray[i].msg;
+                    myAnnot.shapes[0].geometry.x=jsonResponseArray[i].xcoord;
+                    myAnnot.shapes[0].geometry.y=jsonResponseArray[i].ycoord;
+                    myAnnot.shapes[0].geometry.width=jsonResponseArray[i].width;
+                    myAnnot.shapes[0].geometry.width=jsonResponseArray[i].height;
+                    anno.addAnnotation(myAnnot);
+                }
+                //alert(myAnnot.text);
+                */
             var xhr=new XMLHttpRequest();
             xhr.onreadystatechange=function()
             {
             if(xhr.readyState==4&&xhr.status==200)
             {
-            alert(xhr.responseText);
-            var jsonResponse=JSON.parse(xhr.responseText);
-            for(var i=0;i<jsonResponse.length;i++)
+            var jsonResponseArray=JSON.parse(xhr.responseText);
+            for(var i=0; i<jsonResponseArray.length;i++)
             {
-            console.log(jsonResponse);
-            var jsonObj = jsonResponse[i];
-            console.log(jsonObj.message);
-            message=jsonObj.message;
-            anno.screenX=jsonObj.xcoord;
-            anno.screenY=jsonObj.ycoord;
-            anno.text = message;
-            anno.src="http://localhost:3000/images/Question-Mark.jpg";
-            anno.shape = "rect";
-            anno.showAnnotations("http://localhost:3000/images/Question-Mark.jpg");
-            addAnnotation(anno);
-            //onAnnotationCreated(anno);
-            //recordXYText(anno.screenX, anno.screenY, anno);
-            }
-            }
-            }
+            var myAnnot={
+                                   src:'http://localhost:3000/images/Question-Mark.jpg',
+                                   shapes:[{type: 'rect',geometry:{}}]};
+            myAnnot.text=jsonResponseArray[i].message;
+            myAnnot.shapes[0].geometry.x=jsonResponseArray[i].xcoord;
+            myAnnot.shapes[0].geometry.y=jsonResponseArray[i].ycoord;
+            myAnnot.shapes[0].geometry.width=jsonResponseArray[i].width;
+            myAnnot.shapes[0].geometry.height=jsonResponseArray[i].height;
+            anno.addAnnotation(myAnnot);
+            }}}
             xhr.open("GET","notes?userName=userName",true);
             xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
             xhr.send();
@@ -85,7 +100,7 @@ html
 
     body
         label#userName userName
-        img#sample.annotatable(src="images/Question-Mark.jpg", width="500", height="500", alt="")
+        img#sample.annotatable(src="http://localhost:3000/images/Question-Mark.jpg", width="500", height="500", alt="")
         input#submit(type="submit", name="submit", value="Submit", onclick="submitAnnotations()")
         button(onclick="getData()") Read
 

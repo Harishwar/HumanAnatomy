@@ -8,6 +8,7 @@ router.get('/', function(req, res) {
     res.render('index', { title: 'Express' });
 });
 
+
 router.get('/notes',function(req,res) {
     resRows = "error";
     var connection = mysql.createConnection({
@@ -18,11 +19,12 @@ router.get('/notes',function(req,res) {
     });
     var status;
     connection.connect();
-    var queryString = "select username, xcoord, ycoord, message from user where username = '"+req.query.userName+"'";
+    var queryString = "select username, xcoord, ycoord, message, width, height from user where username = '"+req.query.userName+"'";
     console.log(queryString);
     connection.query(queryString, function(err, rows, fields) {
         if (err) throw err;
         //resRows=JSON.stringify(rows);
+        console.log(rows);
         res.json(rows);
     });
     console.log(resRows)
@@ -41,6 +43,8 @@ router.post('/notes',function(req,res){
         var userName= objArray[i].userName;
         var x_coord = objArray[i].x;
         var y_coord = objArray[i].y;
+        var width = objArray[i].width;
+        var height = objArray[i].height;
         var connection = mysql.createConnection({
             host     : 'localhost',
             user     : 'root',
@@ -50,7 +54,7 @@ router.post('/notes',function(req,res){
         var status;
         connection.connect();
 
-        var inserttablequery = "INSERT INTO user(username,xcoord,ycoord,message) VALUES ('" + userName + "','" + x_coord + "','" + y_coord + "','" + message+"')";
+        var inserttablequery = "INSERT INTO user(username,xcoord,ycoord,message,width,height) VALUES ('" + userName + "','" + x_coord + "','" + y_coord + "','" + message+"','"+width+"','"+height+"')";
         console.log(inserttablequery);
         connection.query(inserttablequery, function(error, rows, fields) {
             if (error) { return console.log(error);
