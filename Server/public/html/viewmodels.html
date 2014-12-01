@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Human Anatomy - View Models</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/viewmodels.css" rel="stylesheet">
+    <link href="css/fontello.css" type="text/css" rel="stylesheet">
+    <!--[if lt IE 7]>
+            <link href="css/fontello-ie7.css" type="text/css" rel="stylesheet">
+        <![endif]-->
+    <!-- Google Web fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Quattrocento:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <!-- Load ScrollTo -->
+    <script type="text/javascript" src="scripts/jquery.scrollTo-1.4.2-min.js"></script>
+    <!-- Load LocalScroll -->
+    <script type="text/javascript" src="scripts/jquery.localscroll-1.2.7-min.js"></script>
+    <!-- prettyPhoto Initialization -->
+    <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $("#login").show();
+        $("#signup").hide();
+    });
+    </script>
+</head>
+
+<body>
+    <!-- NavBar -->
+    <div class="navbar-wrapper">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+                    <h1 class="brand"><a href="#top">HumanAnatomy</a></h1>
+                    <nav class="pull-right nav-collapse collapse">
+                        <ul id="menu-main" class="nav">
+                            <li><a title="viewmodels" href="viewmodels.html">View Models</a>
+                            </li>
+                            <li><a title="makemodels" href="makemodels.html">Body Browser</a>
+                            </li>
+                            <li><a title="bodybrowser" href="bodybrowser.html">Make Models</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="top"></div>
+    <!-- Main View -->
+    <section id="contentwrap">
+        <div class="container">
+            <h1 id="headline">View Models</h1>
+
+        </div>
+    </section>
+    <hr>
+    <!-- Footer-->
+    <section id="footer">
+        <footer>
+            <p>&nbsp;&copy; 2014 HumanAnatomy.</p>
+        </footer>
+    </section>
+
+    <script type="text/javascript" src="scripts/bootstrap.js"></script>
+    <script type="text/javascript">
+    function divToggle(arg1, arg2) {
+        document.getElementById(arg1).style.display = 'block';
+        document.getElementById(arg2).style.display = 'none';
+    }
+    </script>
+</body>
+
+</html>

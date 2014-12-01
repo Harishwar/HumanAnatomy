@@ -2,12 +2,104 @@ module.exports = router;
 var express = require('express');
 var router = express.Router();
 var mysql  = require('mysql');
-var resRows;
+var bcrypt = require('bcrypt');
+var resRows="";
+
 /* GET home page. */
 router.get('/', function(req, res) {
     res.render('index', { title: 'Express' });
 });
 
+router.get('/viewmodels', function(req, res) {
+    res.render('viewmodels', { title: 'Express' });
+});
+
+router.get('/makenote', function(req, res) {
+    res.render('makenote', { title: 'Express' });
+});
+
+router.get('/makemodels', function(req, res) {
+    res.render('makemodels', { title: 'Express' });
+});
+
+router.get('/home', function(req, res) {
+    res.render('home', { title: 'Express' });
+});
+
+router.get('/bodybrowser', function(req, res) {
+    res.render('bodybrowser', { title: 'Express' });
+});
+
+router.post('/register',function(req,res){
+   var username = req.body.userName_r;
+    var pass = req.body.pass_r;
+    var name = req.body.flname;
+    var status = 200;
+    bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(pass, salt, function(err, hash) {
+            // Store hash in your password DB.
+            var connection = mysql.createConnection({
+                host     : 'localhost',
+                user     : 'root',
+                password : 'gopal',
+                database: '297'
+            });
+            connection.connect();
+
+            var inserttablequery = "INSERT INTO Registration(username,password, name) VALUES ('" + username + "','" + hash+"','"+name+"')";
+            console.log(inserttablequery);
+            connection.query(inserttablequery, function(error, rows, fields) {
+                if (error) { return console.log(error);
+                    res.send(error.body)
+                    status = 500;
+                }
+            });
+
+        });
+    });
+    res.writeHead(status);
+});
+
+router.post('/login', function(req,res){
+   var username = req.body.userName;
+    var pass = req.body.pass;
+
+    var connection = mysql.createConnection({
+        host     : 'localhost',
+        user     : 'root',
+        password : 'gopal',
+        database: '297'
+    });
+    var status;
+    connection.connect();
+    console.log(connection);
+    var queryString = "select username,password from Registration where username = '"+username+"'";
+    console.log(queryString);
+    connection.query(queryString, function(err, rows, fields) {
+        console.log("err"+err);
+        console.log(rows);
+        resRows=rows;
+        if(resRows.length==0)
+        {
+            res.json({"error":"1", "message":"Not signed up"});
+        }
+        var passHash = resRows[0].password;
+        console.log(passHash);
+        bcrypt.compare(pass, passHash, function(err, result) {
+            if(result)
+            {
+                res.render("home", { title: 'Express' });
+            }
+            else
+            {
+                res.render("index", { title: 'Express' });
+               // res.json({"error":"2", "message":"incorrect credentials"});
+            }
+        });
+
+    });
+    console.log(resRows);
+});
 
 router.get('/notes',function(req,res) {
     resRows = "error";
@@ -75,6 +167,5 @@ router.post('/notes',function(req,res){
 
 
 });
-
 
 module.exports = router;

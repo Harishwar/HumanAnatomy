@@ -1,0 +1,109 @@
+//
+   Created by rajagopalan on 11/30/14.
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title Human Anatomy - Home
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="description", content="")
+        meta(name="author", content="")
+        // Styles
+        link(href="stylesheets/bootstrap.css", rel="stylesheet")
+        link(href="stylesheets/home.css", rel="stylesheet")
+        link(href="stylesheets/fontello.css", type="text/css", rel="stylesheet")
+        //if lt IE 7
+          link(href="stylesheets/fontello-ie7.css", type="text/css", rel="stylesheet")
+        // Google Web fonts
+        link(href="http://fonts.googleapis.com/css?family=Quattrocento:400,700", rel="stylesheet", type="text/css")
+        link(href="http://fonts.googleapis.com/css?family=Patua+One", rel="stylesheet", type="text/css")
+        link(href="http://fonts.googleapis.com/css?family=Open+Sans", rel="stylesheet", type="text/css")
+        link(href="stylesheets/bootstrap-responsive.css", rel="stylesheet")
+        // JQuery
+        script(type="text/javascript", src="javascripts/jquery.js")
+        // Load ScrollTo
+        script(type="text/javascript", src="javascripts/jquery.scrollTo-1.4.2-min.js")
+        // Load LocalScroll
+        script(type="text/javascript", src="javascripts/jquery.localscroll-1.2.7-min.js")
+        // prettyPhoto Initialization
+        script(type="text/javascript", charset="utf-8").
+            $(document).ready(function() {
+            $("#login").show();
+            $("#signup").hide();
+            });
+    body
+        // NavBar
+        .navbar-wrapper
+            .navbar.navbar-inverse.navbar-fixed-top
+                .navbar-inner
+                    .container
+                        a.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
+                        h1.brand
+                            a(href="#top") HumanAnatomy
+                        nav.pull-right.nav-collapse.collapse
+                            ul#menu-main.nav
+                                li
+                                    a(title="viewmodels", href="viewmodels") View Models
+                                li
+                                    a(title="makemodels", href="makemodels") Body Browser
+                                li
+                                    a(title="bodybrowser", href="bodybrowser") Make Models
+        #top
+        // Main View
+        section#contentwrap
+            .container
+                h1#headline Human Anatomy Models
+                .row
+                    .span4
+                        .mask2
+                            a(href="viewmodels")
+                                img(src="images/image01.jpg", alt="")
+                        .inside
+                            hgroup
+                                h2 View Models
+                            .entry-content
+                                p
+                                    | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                a.more-link(href="viewmodels") View Demo
+                        // /.inside
+                    .span4
+                        .mask2
+                            a(href="makemodels")
+                                img(src="images/image01.jpg", alt="")
+                        .inside
+                            hgroup
+                                h2 Make Models
+                            .entry-content
+                                p
+                                    | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                a.more-link(href="makemodels") View Demo
+                        // /.inside
+                    .span4
+                        .mask2
+                            a(href="bodybrowser")
+                                img(src="images/image01.jpg", alt="")
+                        .inside
+                            hgroup
+                                h2 Body Browser
+                            .entry-content
+                                p
+                                    | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                a.more-link(href="bodybrowser") View Demo
+                        // /.inside
+                // /.row
+            // /.container
+        hr
+        // Footer
+        section#footer
+            footer
+                p &#160;&#169; 2014 HumanAnatomy.
+        script(type="text/javascript", src="javascripts/bootstrap.js")
+        script(type="text/javascript").
+            function divToggle(arg1, arg2) {
+            document.getElementById(arg1).style.display = 'block';
+            document.getElementById(arg2).style.display = 'none';
+            }

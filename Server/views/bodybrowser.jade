@@ -5,13 +5,13 @@ doctype html
 html(lang="en")
     head
         meta(charset="utf-8")
-        title Human Anatomy - Login
+        title Human Anatomy - Body Browser
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(name="description", content="")
         meta(name="author", content="")
         // Styles
         link(href="stylesheets/bootstrap.css", rel="stylesheet")
-        link(href="stylesheets/login.css", rel="stylesheet")
+        link(href="stylesheets/bodybrowser.css", rel="stylesheet")
         link(href="stylesheets/fontello.css", type="text/css", rel="stylesheet")
         //if lt IE 7
           link(href="stylesheets/fontello-ie7.css", type="text/css", rel="stylesheet")
@@ -26,6 +26,7 @@ html(lang="en")
         script(type="text/javascript", src="javascripts/jquery.scrollTo-1.4.2-min.js")
         // Load LocalScroll
         script(type="text/javascript", src="javascripts/jquery.localscroll-1.2.7-min.js")
+        // prettyPhoto Initialization
         script(type="text/javascript", charset="utf-8").
             $(document).ready(function() {
             $("#login").show();
@@ -43,41 +44,20 @@ html(lang="en")
                             span.icon-bar
                         h1.brand
                             a(href="#top") HumanAnatomy
+                        nav.pull-right.nav-collapse.collapse
+                            ul#menu-main.nav
+                                li
+                                    a(title="viewmodels", href="viewmodels") View Models
+                                li
+                                    a(title="makemodels", href="makemodels") Body Browser
+                                li
+                                    a(title="bodybrowser", href="bodybrowser") Make Models
         #top
-        // Login
-        #contentwrap
-            .clearfix
-                h1
-                    span Human Anatomy
-                #login.container
-                    .row
-                        .span12
-                            form(method="POST", action="login")
-                                h2
-                                    | Login or
-                                    a(onclick="divToggle('signup','login');")
-                                        span#signuptext Signup
-                                input#userName(type="text", name="userName", placeholder="you@email.com", size="40", title="your email")
-                                input#pass(type="password", name="pass", placeholder="********", size="40", title="your password")
-                                input(type="submit", value="Login")
-                #signup.container
-                    .row
-                        .span12
-                            form(method="POST", action="register")
-                                h2
-                                    a(onclick="divToggle('login','signup');")
-                                        span#logintext Login
-                                    | or Signup
-                                input#flname(type="text", name="flname", placeholder="Your Name")
-                                br
-                                br
-                                input#userName_r(type="text", name="userName_r", placeholder="you@email.com", size="40", title="your email")
-                                br
-                                br
-                                input#pass_r(type="password", name="pass_r", placeholder="********", size="40", title="your password")
-                                br
-                                br
-                                input(type="submit", value="SignUp", onclick="home.html")
+        // Main View
+        section#contentwrap
+            .container
+                h1#headline Body Browser
+        hr
         // Footer
         section#footer
             footer

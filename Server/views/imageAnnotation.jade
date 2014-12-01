@@ -1,0 +1,107 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title Make Notes
+        link(rel="stylesheet", type="text/css", href="stylesheets/annotorious.css")
+        script(src="javascripts/annotorious.min.js")
+        script(src="javascripts/jquery-1.11.1.min.js")
+        script(src="javascripts/jquery.cookie.js")
+        script(src="javascripts/javascripts/helper.js")
+        script(language="JavaScript").
+            var annotObj;
+            var annotObjs=[];
+            function annotClass(x,y,msg,userName,width,height)
+            {
+            this.x=x;
+            this.y=y;
+            this.msg=msg;
+            this.userName=userName;
+            this.width=width;
+            this.height=height;
+            }
+            <!--var image=document.getElementById("sample");-->
+            anno.addHandler('onAnnotationCreated',function(annotation)
+            {
+            document.addEventListener('onmouseclick',recordXYText(event,annotation));
+            });
+            function recordXYText(e,annotation)
+            {
+            //alert(annotation);
+            //alert(annotation.shapes[0].geometry.x);
+            annotObj=new annotClass(annotation.shapes[0].geometry.x,annotation.shapes[0].geometry.y,annotation.text,document.getElementById("userName").innerHTML,annotation.shapes[0].geometry.width,annotation.shapes[0].geometry.height);
+            //alert("hey"+e.clientX+""+e.clientY+""+annotation.text);
+            annotObjs.push(annotObj);
+            console.log(annotObjs);
+            }
+            function submitAnnotations()
+            {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 ) {
+            if(xmlhttp.status == 200){
+            //alert("Success"+JSON.stringify(annotObjs))
+            }
+            else if(xmlhttp.status == 400) {
+            //alert('There was an error 400')
+            }
+            else {
+            //alert('Unexpected error was returned')
+            }
+            }
+            }
+            xmlhttp.open("POST", 'notes', true);
+            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xmlhttp.send(JSON.stringify(annotObjs));
+            //alert(annotObjs[0].msg);
+            }
+            function getData()
+            {
+
+                //alert(xhr.responseText);
+                /*var resp=[ { x: 0.4, y: 0.3, msg: 'HIii', userName: 'userName' },{ x: 0.7, y: 0.6, msg: 'Hello', userName: 'userName' } ]
+                var jsonResponseArray=resp;
+                for(var i=0; i<jsonResponseArray.length;i++)
+                {
+                    var myAnnot={
+                        src:'http://localhost:3000/images/Question-Mark.jpg',
+                        shapes:[{type: 'rect',geometry: {width:0.3,height:0.2}}]}
+                    myAnnot.text=jsonResponseArray[i].msg;
+                    myAnnot.shapes[0].geometry.x=jsonResponseArray[i].xcoord;
+                    myAnnot.shapes[0].geometry.y=jsonResponseArray[i].ycoord;
+                    myAnnot.shapes[0].geometry.width=jsonResponseArray[i].width;
+                    myAnnot.shapes[0].geometry.width=jsonResponseArray[i].height;
+                    anno.addAnnotation(myAnnot);
+                }
+                //alert(myAnnot.text);
+                */
+            var xhr=new XMLHttpRequest();
+            xhr.onreadystatechange=function()
+            {
+            if(xhr.readyState==4&&xhr.status==200)
+            {
+            var jsonResponseArray=JSON.parse(xhr.responseText);
+            for(var i=0; i<jsonResponseArray.length;i++)
+            {
+            var myAnnot={
+                                   src:'http://localhost:3000/images/Question-Mark.jpg',
+                                   shapes:[{type: 'rect',geometry:{}}]};
+            myAnnot.text=jsonResponseArray[i].message;
+            myAnnot.shapes[0].geometry.x=jsonResponseArray[i].xcoord;
+            myAnnot.shapes[0].geometry.y=jsonResponseArray[i].ycoord;
+            myAnnot.shapes[0].geometry.width=jsonResponseArray[i].width;
+            myAnnot.shapes[0].geometry.height=jsonResponseArray[i].height;
+            anno.addAnnotation(myAnnot);
+            }}}
+            xhr.open("GET","notes?userName=userName",true);
+            xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+            xhr.send();
+            }
+
+    body
+        label#userName userName
+        img#sample.annotatable(src="http://localhost:3000/images/Question-Mark.jpg", width="500", height="500", alt="")
+        input#submit(type="submit", name="submit", value="Submit", onclick="submitAnnotations()")
+        button(onclick="getData()") Read
+
+              
