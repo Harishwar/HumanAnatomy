@@ -30,6 +30,18 @@ router.get('/bodybrowser', function(req, res) {
     res.render('bodybrowser', { title: 'Express' });
 });
 
+router.get('/heartviewer', function(req, res) {
+    res.render('HeartViewer', { title: 'Express' });
+});
+
+router.get('/skeletonviewer', function(req, res) {
+    res.render('skeletonViewer', { title: 'Express' });
+});
+
+router.get('/bodyviewer', function(req, res) {
+    res.render('bodyViewer', { title: 'Express' });
+});
+
 router.post('/register',function(req,res){
    var username = req.body.userName_r;
     var pass = req.body.pass_r;
