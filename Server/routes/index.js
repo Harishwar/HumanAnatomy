@@ -46,6 +46,11 @@ router.post('/register',function(req,res){
    var username = req.body.userName_r;
     var pass = req.body.pass_r;
     var name = req.body.flname;
+    if(username==undefined || username==""||pass==undefined||pass=="")
+    {
+        res.render("index", { title: 'Express' });
+        return;
+    }
     var status = 200;
     bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(pass, salt, function(err, hash) {
@@ -64,17 +69,30 @@ router.post('/register',function(req,res){
                 if (error) { return console.log(error);
                     res.send(error.body)
                     status = 500;
+                    return;
                 }
             });
 
         });
     });
-    res.writeHead(status);
+    if(status==200)
+    {
+        res.render("index",{ title : "Express"});
+    }
+    else
+    {
+        res.render("error",{title:"Express"});
+    }
 });
 
 router.post('/login', function(req,res){
    var username = req.body.userName;
     var pass = req.body.pass;
+    if(username==undefined || username==""||pass==undefined||pass=="")
+    {
+        res.render("index", { title: 'Express' });
+        return;
+    }
 
     var connection = mysql.createConnection({
         host     : 'localhost',
@@ -93,7 +111,7 @@ router.post('/login', function(req,res){
         resRows=rows;
         if(resRows.length==0)
         {
-            res.json({"error":"1", "message":"Not signed up"});
+            res.render("index", { title: 'Express' });
         }
         var passHash = resRows[0].password;
         console.log(passHash);
