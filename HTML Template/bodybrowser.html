@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Human Anatomy - Body Browser</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bodybrowser.css" rel="stylesheet">
+    <link href="css/fontello.css" type="text/css" rel="stylesheet">
+    <!--[if lt IE 7]>
+            <link href="css/fontello-ie7.css" type="text/css" rel="stylesheet">
+        <![endif]-->
+    <!-- Google Web fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Quattrocento:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <!-- Load ScrollTo -->
+    <script type="text/javascript" src="scripts/jquery.scrollTo-1.4.2-min.js"></script>
+    <!-- Load LocalScroll -->
+    <script type="text/javascript" src="scripts/jquery.localscroll-1.2.7-min.js"></script>
+
+    <script type="text/javascript" src="scripts/custom.js"></script>
+    <!-- jQuery -->
+    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" rel="Stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
+    <!-- o3v styles -->
+    <link type="text/css" href="css/bodybrowser.css" rel="Stylesheet" />
+
+    <!-- Local -->
+    <script type="text/javascript">
+    var o3v = {}; // open-3d-viewer namespace
+    </script>
+
+    <!-- Webgl -->
+    <script type="text/javascript" src="scripts/gl-matrix-min.js"></script>
+    <script type="text/javascript" src="scripts/webgl.js"></script>
+    <script type="text/javascript" src="scripts/loader.js"></script>
+    <script type="text/javascript" src="scripts/renderer.js"></script>
+    <script type="text/javascript" src="scripts/webgl_util.js"></script>
+
+    <!-- o3v specific -->
+    <script type="text/javascript" src="scripts/common.js"></script>
+    <script type="text/javascript" src="scripts/models.js"></script>
+    <script type="text/javascript" src="scripts/entities.js"></script>
+    <script type="text/javascript" src="scripts/content.js"></script>
+    <script type="text/javascript" src="scripts/layer.js"></script>
+    <script type="text/javascript" src="scripts/history.js"></script>
+    <script type="text/javascript" src="scripts/layers_ui.js"></script>
+    <script type="text/javascript" src="scripts/gestures.js"></script>
+    <script type="text/javascript" src="scripts/select.js"></script>
+    <script type="text/javascript" src="scripts/label.js"></script>
+    <script type="text/javascript" src="scripts/nav_ui.js"></script>
+    <script type="text/javascript" src="scripts/navigate.js"></script>
+    <script type="text/javascript" src="scripts/input_handler.js"></script>
+    <script type="text/javascript" src="scripts/select.js"></script>
+    <script type="text/javascript" src="scripts/interpolant.js"></script>
+    <script type="text/javascript" src="scripts/opacity.js"></script>
+    <script type="text/javascript" src="scripts/main_ui.js"></script>
+    <script type="text/javascript" src="scripts/render_interface.js"></script>
+    <script type="text/javascript" src="scripts/viewer.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        window.viewer_ = new o3v.Viewer();
+    });
+    </script>
+</head>
+
+<body>
+    <!-- NavBar -->
+    <div class="navbar-wrapper">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+                    <h1 class="brand"><a href="home.html">HumanAnatomy</a></h1>
+                    <nav class="pull-right nav-collapse collapse">
+                        <ul id="menu-main" class="nav">
+                            <li><a title="viewmodels" href="viewmodels.html">View Models</a>
+                            </li>
+                            <li><a title="makenotes" href="makenotes.html">Make Notes</a>
+                            </li>
+                            <li><a title="bodybrowser" href="bodybrowser.html">Body Browser</a>
+                            </li>
+                            <li><a title="logout" href="index.html">Logout</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="top"></div>
+    <!-- Main View -->
+
+    <!-- Canvas for verifying webgl -->
+    <canvas id="gltest" style="display:none"></canvas>
+
+    <!-- Container for labels -->
+    <div id="labelcontainer" style="width:0px; height:0px; left:0px; top:0px; position:absolute; z-index:1"></div>
+
+    <div id="opac_idx" style="display:none;left:50%;top:100%;position:absolute;margin-top:-50px;color:#06F;z-index:3;margin-left:-89px"></div>
+
+    <div id="r0" class="indicator"></div>
+    <div id="r1" class="indicator"></div>
+    <div id="r2" class="indicator"></div>
+    <div id="r3" class="indicator"></div>
+    <div id="r4" class="indicator"></div>
+    <div id="r5" class="indicator"></div>
+    <div id="r6" class="indicator"></div>
+    <div id="r7" class="indicator"></div>
+
+    <div id="loading-feedback" class="loading-feedback">Loading...</div>
+
+    <!-- Footer-->
+    <section id="footer">
+        <footer>
+            <p>&nbsp;&copy; 2014 HumanAnatomy.</p>
+        </footer>
+    </section>
+
+    <script type="text/javascript" src="scripts/bootstrap.js"></script>
+
+</body>
+
+</html>
