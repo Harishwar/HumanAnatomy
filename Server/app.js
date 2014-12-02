@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var debug = require('debug')('Server');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -56,5 +57,10 @@ app.use(function(err, req, res, next) {
     });
 });
 
-
 module.exports = app;
+
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+    debug('Express server listening on port ' + server.address().port);
+});

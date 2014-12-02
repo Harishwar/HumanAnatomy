@@ -56,10 +56,10 @@ router.post('/register',function(req,res){
         bcrypt.hash(pass, salt, function(err, hash) {
             // Store hash in your password DB.
             var connection = mysql.createConnection({
-                host     : 'localhost',
+                host     : '*******.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
                 user     : 'root',
-                password : 'gopal',
-                database: '297'
+                password : 'password',
+                database: 'cmpe297'
             });
             connection.connect();
 
@@ -95,10 +95,10 @@ router.post('/login', function(req,res){
     }
 
     var connection = mysql.createConnection({
-        host     : 'localhost',
+        host     : '*******.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
         user     : 'root',
-        password : 'gopal',
-        database: '297'
+        password : 'password',
+        database: 'cmpe297'
     });
     var status;
     connection.connect();
@@ -134,10 +134,10 @@ router.post('/login', function(req,res){
 router.get('/notes',function(req,res) {
     resRows = "error";
     var connection = mysql.createConnection({
-        host     : 'localhost',
+        host     : '*******.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
         user     : 'root',
-        password : 'gopal',
-        database: '297'
+        password : 'password',
+        database: 'cmpe297'
     });
     var status;
     connection.connect();
@@ -168,10 +168,10 @@ router.post('/notes',function(req,res){
         var width = objArray[i].width;
         var height = objArray[i].height;
         var connection = mysql.createConnection({
-            host     : 'localhost',
+            host     : '*******.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
             user     : 'root',
-            password : 'gopal',
-            database: '297'
+            password : 'password',
+            database: 'cmpe297'
         });
         var status;
         connection.connect();
