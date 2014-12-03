@@ -43,32 +43,50 @@ html(lang="en")
                             span.icon-bar
                             span.icon-bar
                         h1.brand
-                            a(href="#top") HumanAnatomy
+                            a(href="home") HumanAnatomy
                         nav.pull-right.nav-collapse.collapse
                             ul#menu-main.nav
                                 li
                                     a(title="viewmodels", href="viewmodels") View Models
                                 li
-                                    a(title="makemodels", href="makemodels") Body Browser
+                                    a(title="makemodels", href="makemodels") Make Models
                                 li
-                                    a(title="bodybrowser", href="bodybrowser") Make Models
+                                    a(title="bodybrowser", href="bodybrowser") Body Browser
                                 li
-                                    a(title="logout", href="index") Logout
-        #top
-        // Main View
+                                    a(title="logout", href="logout") Logout
         section#contentwrap
             .container
                 h1#headline View Models
-
-                a.more-link(href="heartviewer") Heart Viewer
-                br
-                br
-                a.more-link(href="skeletonviewer") Skeleton Viewer
-                br
-                br
-                a.more-link(href="bodyviewer") Body Viewer
-                br
-                br
+                .row
+                    .span4
+                        .mask2
+                            a(href="heartviewer")
+                                img(src="images/viewmodel_heart", alt="")
+                        .inside
+                            hgroup
+                                h2 Heart Viewer
+                            .entry-content
+                                a.more-link(href="heartviewer") View Demo
+                        // /.inside
+                    .span4
+                        .mask2
+                            a(href="skeletonviewer")
+                                img(src="images/viewmodel_skeleton", alt="")
+                        .inside
+                            hgroup
+                                h2 Skeleton Viewer
+                            .entry-content
+                                a.more-link(href="skeletonviewer") View Demo
+                        // /.inside
+                    .span4
+                        .mask2
+                            a(href="bodyviewer")
+                                img(src="images/viewmodel_male", alt="")
+                        .inside
+                            hgroup
+                                h2 Body Viewer
+                            .entry-content
+                                a.more-link(href="bodyviewer") View Demo
         hr
         // Footer
         section#footer

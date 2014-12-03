@@ -31,7 +31,6 @@ input[type=text], input[type=submit], textarea {
 input, button, select, textarea {
     font-family: 'Quattrocento', serif;
 }
-
 p {
     font-size: 1em;
     /* 16px */
@@ -153,7 +152,6 @@ em {
     color: #f0bf00;
     text-transform: uppercase;
 }
-
 .hide-text {
     text-indent: 100%;
     white-space: nowrap;
@@ -173,12 +171,11 @@ em {
     font-weight: normal;
     font-family: 'Quattrocento', serif;
 }
-
 /* Nav Bar*/
 
 .navbar-fixed-top .container {
     /* Uncomment to make nav expand full width */
-    /*	width: auto; */
+    /*  width: auto; */
 }
 .navbar .brand {
     margin-left: 0;
@@ -218,7 +215,6 @@ em {
 #menu-main {
     margin-top: 1.125em;
 }
-
 .navbar-inverse .brand, .navbar-inverse .nav > li > a {
     text-shadow: none;
 }
@@ -371,7 +367,7 @@ em {
     max-height: 642px;
 }
 .banner-caption {
-    /*	width: 18%; */
+    /*  width: 18%; */
 
     position: absolute;
     left: 20%;
@@ -438,7 +434,7 @@ em {
 
 @media (max-width: 1186px) {
     .banner-caption {
-        /*	width: 18%; */
+        /*  width: 18%; */
 
         position: absolute;
         left: 20%;
@@ -540,14 +536,10 @@ em {
 }
 /* Smartphones (landscape) ----------- */
 
-@media only screen and (min-width: 321px) {
-
-}
+@media only screen and (min-width: 321px) {}
 /* Smartphones (portrait) ----------- */
 
-@media only screen and (max-width: 320px) {
-
-}
+@media only screen and (max-width: 320px) {}
 /* iPads (portrait and landscape) ----------- */
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
