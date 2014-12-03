@@ -2,7 +2,11 @@ module.exports = router;
 var express = require('express');
 var router = express.Router();
 var mysql  = require('mysql');
-var bcrypt = require('bcrypt');
+if (typeof localStorage === "undefined" || localStorage === null) {
+    var LocalStorage = require('node-localstorage').LocalStorage;
+    localStorage = new LocalStorage('./scratch');
+}
+//var bcrypt = require('bcrypt');
 var resRows="";
 
 /* GET home page. */
@@ -11,53 +15,86 @@ router.get('/', function(req, res) {
 });
 
 router.get('/viewmodels', function(req, res) {
-    res.render('viewmodels', { title: 'Express' });
+    if(req.session.userName){
+        res.render('viewmodels', { title: 'Express' });
+    }
+    else
+    res.render('index', { title: 'Express' });
 });
 
-router.get('/makenote', function(req, res) {
-    res.render('makenote', { title: 'Express' });
-});
 
 router.get('/makemodels', function(req, res) {
-    res.render('makemodels', { title: 'Express' });
+    if(req.session.userName) {
+        console.log(sess.userName)
+        res.render('makemodels', {title: 'Express'});
+    }
+    else
+        res.render('index', { title: 'Express' });
 });
 
-router.get('/humanbody', function(req, res) {
-    res.render('../public/images/human_body.png');
-});
 
 router.get('/home', function(req, res) {
-    res.render('home', { title: 'Express' });
+    if(req.session.userName) {
+        res.render('home', {title: 'Express'});
+    }
+    else
+        res.render('index', { title: 'Express' });
+
 });
 
 router.get('/bodybrowser', function(req, res) {
-    res.render('../public/html/bodybrowser.html');
+    if(req.session.userName) {
+        res.render('../public/html/bodybrowser.html');
+    }
+    else
+        res.render('index', { title: 'Express' });
+
 });
 
 router.get('/heartviewer', function(req, res) {
-    res.render('HeartViewer', { title: 'Express' });
+    if(req.session.userName){
+        res.render('HeartViewer', { title: 'Express' });
+    }
+    else
+    res.render('index', { title: 'Express' });
 });
 
 router.get('/skeletonviewer', function(req, res) {
-    res.render('skeletonViewer', { title: 'Express' });
+    if(req.session.userName) {
+        res.render('skeletonViewer', {title: 'Express'});
+    }
+    else
+        res.render('index', { title: 'Express' });
 });
 
 router.get('/bodyviewer', function(req, res) {
-    res.render('bodyViewer', { title: 'Express' });
+    if(req.session.userName) {
+        res.render('bodyViewer', {title: 'Express'});
+    }
+    else
+        res.render('index', { title: 'Express' });
+
 });
 
 router.post('/register',function(req,res){
    var username = req.body.userName_r;
     var pass = req.body.pass_r;
     var name = req.body.flname;
+    if(req.session.userName)
+    {
+        res.render("home", { title: 'Express' });
+        return;
+    }
+
     if(username==undefined || username==""||pass==undefined||pass=="")
     {
+
         res.render("index", { title: 'Express' });
         return;
     }
     var status = 200;
-    bcrypt.genSalt(10, function(err, salt) {
-        bcrypt.hash(pass, salt, function(err, hash) {
+   // bcrypt.genSalt(10, function(err, salt) {
+      //  bcrypt.hash(pass, salt, function(err, hash) {
             // Store hash in your password DB.
             var connection = mysql.createConnection({
                 host     : 'sanatom.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
@@ -67,7 +104,7 @@ router.post('/register',function(req,res){
             });
             connection.connect();
 
-            var inserttablequery = "INSERT INTO Registration(username,password, name) VALUES ('" + username + "','" + hash+"','"+name+"')";
+            var inserttablequery = "INSERT INTO Registration(username,password, name) VALUES ('" + username + "','" + pass+"','"+name+"')";
             console.log(inserttablequery);
             connection.query(inserttablequery, function(error, rows, fields) {
                 if (error) { return console.log(error);
@@ -77,14 +114,19 @@ router.post('/register',function(req,res){
                 }
             });
 
-        });
-    });
+        //});
+    //});
     if(status==200)
     {
-        res.render("index",{ title : "Express"});
+        //localStorage.setItem("session_key","1");
+        //localStorage.setItem("username",username);
+        sess=req.session;
+        sess.userName=username;
+        res.render("home",{ title : "Express"});
     }
     else
     {
+
         res.render("error",{title:"Express"});
     }
 });
@@ -92,6 +134,10 @@ router.post('/register',function(req,res){
 router.post('/login', function(req,res){
    var username = req.body.userName;
     var pass = req.body.pass;
+    if(req.session.userName){
+        res.render("home", { title: 'Express' });
+        return;
+    }
     if(username==undefined || username==""||pass==undefined||pass=="")
     {
         res.render("index", { title: 'Express' });
@@ -107,7 +153,7 @@ router.post('/login', function(req,res){
     var status;
     connection.connect();
     console.log(connection);
-    var queryString = "select username,password from Registration where username = '"+username+"'";
+    var queryString = "select username,password from Registration where username = '"+req.session.userName+"'";
     console.log(queryString);
     connection.query(queryString, function(err, rows, fields) {
         console.log("err"+err);
@@ -119,13 +165,17 @@ router.post('/login', function(req,res){
         }
         var passHash = resRows[0].password;
         console.log(passHash);
-        bcrypt.compare(pass, passHash, function(err, result) {
-            if(result)
+      //  bcrypt.compare(pass, passHash, function(err, result) {
+            //if(result)
+            if(passHash==pass)
             {
+                sess=req.session;
+                sess.userName=username;
                 res.render("home", { title: 'Express' });
             }
             else
             {
+
                 res.render("index", { title: 'Express' });
                // res.json({"error":"2", "message":"incorrect credentials"});
             }
@@ -133,7 +183,7 @@ router.post('/login', function(req,res){
 
     });
     console.log(resRows);
-});
+//});
 
 router.get('/notes',function(req,res) {
     resRows = "error";
@@ -145,7 +195,7 @@ router.get('/notes',function(req,res) {
     });
     var status;
     connection.connect();
-    var queryString = "select username, xcoord, ycoord, message, width, height from user where username = '"+req.query.userName+"'";
+    var queryString = "select username, xcoord, ycoord, message, width, height from user where username = '"+req.session.userName+"'";
     console.log(queryString);
     connection.query(queryString, function(err, rows, fields) {
         if (err) throw err;
@@ -180,7 +230,7 @@ router.post('/notes',function(req,res){
         var status;
         connection.connect();
 
-        var inserttablequery = "INSERT INTO user(username,xcoord,ycoord,message,width,height) VALUES ('" + userName + "','" + x_coord + "','" + y_coord + "','" + message+"','"+width+"','"+height+"')";
+        var inserttablequery = "INSERT INTO user(username,xcoord,ycoord,message,width,height) VALUES ('" + req.session.userName + "','" + x_coord + "','" + y_coord + "','" + message+"','"+width+"','"+height+"')";
         console.log(inserttablequery);
         connection.query(inserttablequery, function(error, rows, fields) {
             if (error) { return console.log(error);
@@ -202,4 +252,18 @@ router.post('/notes',function(req,res){
 
 });
 
+router.get('/logout',function(req,res){
+
+    req.session.destroy(function(err){
+        if(err){
+            console.log(err);
+        }
+        else
+        {
+            console.log("You are logged out");
+            res.redirect('/');
+        }
+    });
+
+});
 module.exports = router;

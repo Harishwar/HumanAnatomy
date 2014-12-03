@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var debug = require('debug')('Server');
+var debug = require('debug')('CMPE297BodyBrowser');
 var app = require('../app');
 
 app.set('port', process.env.PORT || 3000);

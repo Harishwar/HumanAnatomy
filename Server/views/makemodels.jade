@@ -112,7 +112,7 @@ html(lang="en")
             for(var i=0; i<jsonResponseArray.length;i++)
             {
             var myAnnot={
-                                   src:'humanbody',
+                                   src:'http://localhost:3000/images/human_body.png',
                                    shapes:[{type: 'rect',geometry:{}}]};
             myAnnot.text=jsonResponseArray[i].message;
             myAnnot.shapes[0].geometry.x=jsonResponseArray[i].xcoord;
@@ -146,7 +146,7 @@ html(lang="en")
                                 li
                                     a(title="bodybrowser", href="bodybrowser") Make Notes
                                 li
-                                    a(title="logout", href="index") Logout
+                                    a(title="logout", href="logout") Logout
         #top
         // Main View
         section#contentwrap

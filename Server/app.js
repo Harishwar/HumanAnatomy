@@ -8,13 +8,16 @@ var debug = require('debug')('Server');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var express = require('express');
+var session = require('express-session');
 var app = express();
-
+app.use(session({secret: 'teamNeo'}));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.engine('html', require('ejs').renderFile);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -63,5 +66,5 @@ module.exports = app;
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
-    debug('Express server listening on port ' + server.address().port);
+  debug('Express server listening on port ' + server.address().port);
 });
