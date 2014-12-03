@@ -1,0 +1,39 @@
+{
+    "layers": [10],
+    "dag": [
+        [1, [10]],
+        [10, [5014, 5011, 5018, 5008, 5005, 5003, 5019, 5006, 5012, 5009, 5017, 5013, 5004, 5010, 5020, 5016, 5002, 5007, 5001, 5015]]
+    ],
+    "symmetries": [],
+    "names": [
+        [10, "Male Skin"]
+    ],
+    "leafs": [
+        [5011, "cylinder"],
+        [5020, "lacrimal_polysurface1"],
+        [5002, "l_finger_nails_polysurface1_l_finger_nails_polysurface1_eye_whitesg"],
+        [5015, "skin_polysurface1"],
+        [5014, "r_finger_nails_polysurface1"],
+        [5019, "eye_outer_polysurface1"],
+        [5017, "eye_pupil_polysurface1"],
+        [5004, "r_finger_nails_polysurface1_r_finger_nails_polysurface1_nailssg"],
+        [5010, "lacrimal_polysurface1_lacrimal_polysurface1_lacrimalsg"],
+        [5007, "eye_pupil_polysurface1_eye_pupil_polysurface1_eye_pupilsg"],
+        [5001, "cylinder_cylinder_none"],
+        [5016, "eye_iris_polysurface1"],
+        [5003, "eye_white_polysurface1_eye_white_polysurface1_eye_whitesg"],
+        [5012, "l_finger_nails_polysurface1"],
+        [5008, "toe_nails_polysurface1_toe_nails_polysurface1_skinsg"],
+        [5005, "skin_polysurface1_skin_polysurface1_skinsg"],
+        [5006, "eye_iris_polysurface1_eye_iris_polysurface1_eye_irissg"],
+        [5009, "eye_outer_polysurface1_eye_outer_polysurface1_eye_outersg"],
+        [5018, "toe_nails_polysurface1"],
+        [5013, "eye_white_polysurface1"]
+    ],
+    "hidden": [1, 10],
+    "nodes": [
+        [1, "male_skin"],
+        [10, "male_skin_layer"]
+    ],
+    "sublayers": []
+}

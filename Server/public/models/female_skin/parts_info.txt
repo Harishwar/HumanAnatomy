@@ -1,0 +1,153 @@
+# Parts
+
+bottom_cylinder.001_none
+	id: 5001
+	type: part
+
+top_cylinder_none
+	id: 5002
+	type: part
+
+eye_l_outer_polysurface1_eye_l_outer_polysurface1_eye_outersg
+	id: 5003
+	type: part
+
+eye_l_pupil_polysurface1_eye_l_pupil_polysurface1_eye_pupilssg
+	id: 5004
+	type: part
+
+eye_l_white_polysurface1_eye_l_white_polysurface1_eye_whitesg
+	id: 5005
+	type: part
+
+l_finger_nails_polysurface1_l_finger_nails_polysurface1_nailssg
+	id: 5006
+	type: part
+
+eye_r_iris_polysurface1_eye_r_iris_polysurface1_eye_irissg
+	id: 5007
+	type: part
+
+eye_r_pupil_polysurface1_eye_r_pupil_polysurface1_eye_pupilssg
+	id: 5008
+	type: part
+
+eye_l_iris_polysurface1_eye_l_iris_polysurface1_eye_irissg
+	id: 5009
+	type: part
+
+eye_r_white_polysurface1_eye_r_white_polysurface1_eye_whitesg
+	id: 5010
+	type: part
+
+int_mouth_polysurface1_int_mouth_polysurface1_int_mouthsg
+	id: 5011
+	type: part
+
+eyelashes_polysurface1_eyelashes_polysurface1_lashessg
+	id: 5012
+	type: part
+
+skin_polysurface1_skin_polysurface1_skinsg
+	id: 5013
+	type: part
+
+lac_car_polysurface1_lac_car_polysurface1_lacrimalsg
+	id: 5014
+	type: part
+
+r_finger_nails_polysurface1_r_finger_nails_polysurface1_nailssg
+	id: 5015
+	type: part
+
+eye_r_outer_polysurface1_eye_r_outer_polysurface1_eye_outersg
+	id: 5016
+	type: part
+
+toe_nails_polysurface1_toe_nails_polysurface1_nailssg
+	id: 5017
+	type: part
+
+bottom_cylinder.001
+	id: 5018
+	type: part
+
+top_cylinder
+	id: 5019
+	type: part
+
+eye_l_outer_polysurface1
+	id: 5020
+	type: part
+
+eye_l_pupil_polysurface1
+	id: 5021
+	type: part
+
+eye_l_white_polysurface1
+	id: 5022
+	type: part
+
+l_finger_nails_polysurface1
+	id: 5023
+	type: part
+
+eye_r_iris_polysurface1
+	id: 5024
+	type: part
+
+eye_r_pupil_polysurface1
+	id: 5025
+	type: part
+
+eye_l_iris_polysurface1
+	id: 5026
+	type: part
+
+eye_r_white_polysurface1
+	id: 5027
+	type: part
+
+int_mouth_polysurface1
+	id: 5028
+	type: part
+
+eyelashes_polysurface1
+	id: 5029
+	type: part
+
+skin_polysurface1
+	id: 5030
+	type: part
+
+lac_car_polysurface1
+	id: 5031
+	type: part
+
+r_finger_nails_polysurface1
+	id: 5032
+	type: part
+
+eye_r_outer_polysurface1
+	id: 5033
+	type: part
+
+toe_nails_polysurface1
+	id: 5034
+	type: part
+
+# Layers
+
+female_skin_layer
+	id: 10
+	type: group
+	display_name_en_us: Female Skin
+	layer: yes
+	hidden: yes
+
+# Groups
+
+female_skin
+	id: 1
+	type: group
+	hidden : yes

@@ -32,5 +32,4 @@ node_modules
 *.obj
 *.mtl
 *.blend
-Server/public/Models/*
 Thumbs.db

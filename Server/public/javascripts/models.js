@@ -28,23 +28,19 @@ o3v.MODELS = [
     metadataFile: 'entity_metadata.json',
     texturePath: 'models/common/',
     numLayers: 1
-  }
-  /*{
+  },{
+    name: 'male_skin.obj',
+    scriptName: 'male_skin.js',
+    modelPath: 'models/male_skin/',
+    metadataFile: 'entity_metadata.json',
+    texturePath: 'models/common/',
+    numLayers: 1
+  },{
     name: 'female_skin.obj',
-    scriptName: 'femaleskin.js',
+    scriptName: 'female_skin.js',
     modelPath: 'models/female_skin/',
     metadataFile: 'entity_metadata.json',
     texturePath: 'models/common/',
     numLayers: 1
-  }*/
-];
-
-/* o3v.MODELS = [
-  {
-    name: 'MakeHumanModels.obj',
-    scriptName: 'MakeHumanModels.js',
-    modelPath: 'models/MakeHumanModels/',
-    texturePath: 'models/MakeHumanModels/textures/',
-    numLayers: 2
   }
-]; */
+];

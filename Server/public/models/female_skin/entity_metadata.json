@@ -1,0 +1,53 @@
+{
+    "layers": [10],
+    "dag": [
+        [1, [10]],
+        [10, [5006, 5018, 5016, 5005, 5017, 5027, 5001, 5007, 5032, 5033, 5026, 5020, 5019, 5015, 5022, 5030, 5034, 5029, 5011, 5002, 5023, 5025, 5004, 5008, 5031, 5009, 5010, 5013, 5012, 5021, 5024, 5014, 5003, 5028]]
+    ],
+    "symmetries": [],
+    "names": [
+        [10, "Female Skin"]
+    ],
+    "leafs": [
+        [5005, "eye_l_white_polysurface1_eye_l_white_polysurface1_eye_whitesg"],
+        [5018, "bottom_cylinder.001"],
+        [5016, "eye_r_outer_polysurface1_eye_r_outer_polysurface1_eye_outersg"],
+        [5006, "l_finger_nails_polysurface1_l_finger_nails_polysurface1_nailssg"],
+        [5017, "toe_nails_polysurface1_toe_nails_polysurface1_nailssg"],
+        [5007, "eye_r_iris_polysurface1_eye_r_iris_polysurface1_eye_irissg"],
+        [5027, "eye_r_white_polysurface1"],
+        [5001, "bottom_cylinder.001_none"],
+        [5030, "skin_polysurface1"],
+        [5032, "r_finger_nails_polysurface1"],
+        [5008, "eye_r_pupil_polysurface1_eye_r_pupil_polysurface1_eye_pupilssg"],
+        [5020, "eye_l_outer_polysurface1"],
+        [5019, "top_cylinder"],
+        [5015, "r_finger_nails_polysurface1_r_finger_nails_polysurface1_nailssg"],
+        [5022, "eye_l_white_polysurface1"],
+        [5034, "toe_nails_polysurface1"],
+        [5029, "eyelashes_polysurface1"],
+        [5011, "int_mouth_polysurface1_int_mouth_polysurface1_int_mouthsg"],
+        [5002, "top_cylinder_none"],
+        [5023, "l_finger_nails_polysurface1"],
+        [5025, "eye_r_pupil_polysurface1"],
+        [5003, "eye_l_outer_polysurface1_eye_l_outer_polysurface1_eye_outersg"],
+        [5004, "eye_l_pupil_polysurface1_eye_l_pupil_polysurface1_eye_pupilssg"],
+        [5033, "eye_r_outer_polysurface1"],
+        [5031, "lac_car_polysurface1"],
+        [5009, "eye_l_iris_polysurface1_eye_l_iris_polysurface1_eye_irissg"],
+        [5010, "eye_r_white_polysurface1_eye_r_white_polysurface1_eye_whitesg"],
+        [5013, "skin_polysurface1_skin_polysurface1_skinsg"],
+        [5012, "eyelashes_polysurface1_eyelashes_polysurface1_lashessg"],
+        [5021, "eye_l_pupil_polysurface1"],
+        [5024, "eye_r_iris_polysurface1"],
+        [5014, "lac_car_polysurface1_lac_car_polysurface1_lacrimalsg"],
+        [5026, "eye_l_iris_polysurface1"],
+        [5028, "int_mouth_polysurface1"]
+    ],
+    "hidden": [1, 10],
+    "nodes": [
+        [1, "female_skin"],
+        [10, "female_skin_layer"]
+    ],
+    "sublayers": []
+}
