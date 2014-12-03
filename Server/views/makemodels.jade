@@ -149,14 +149,18 @@ html(lang="en")
                                     a(title="logout", href="logout") Logout
         #top
         // Main View
+
         section#contentwrap
             .container
+                label#userName
+                    .pull-right userName
                 h1#headline Make Notes
 
-        label#userName userName
-        input#submit(type="submit", name="submit", value="Submit", onclick="submitAnnotations()")
+
+
         //button(onclick="getData()") Read
         img#sample.annotatable(src="http://localhost:3000/images/human_body.png", alt="")
+        input#submit.pull-right.submitbutton(type="submit", name="submit", value="Submit", onclick="submitAnnotations()")
 
         hr
 

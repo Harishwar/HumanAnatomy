@@ -76,7 +76,7 @@ router.get('/heartviewer', function(req, res) {
 
 router.get('/skeletonviewer', function(req, res) {
     if (req.session.userName) {
-        res.render('skeletonViewer', {
+        res.render('SkeletonViewer', {
             title: 'Express'
         });
     } else
@@ -87,7 +87,7 @@ router.get('/skeletonviewer', function(req, res) {
 
 router.get('/bodyviewer', function(req, res) {
     if (req.session.userName) {
-        res.render('bodyViewer', {
+        res.render('BodyViewer', {
             title: 'Express'
         });
     } else
@@ -118,16 +118,16 @@ router.post('/register', function(req, res) {
     var status = 200;
     // bcrypt.genSalt(10, function(err, salt) {
     //  bcrypt.hash(pass, salt, function(err, hash) {
-    // Store hash in your password DB.
+    // Store hash in your ******** DB.
     var connection = mysql.createConnection({
-        host: 'sanatom.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
+        host: '*******.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
         user: 'root',
-        password: 'password',
+        ********: '********',
         database: 'cmpe297'
     });
     connection.connect();
 
-    var inserttablequery = "INSERT INTO Registration(username,password, name) VALUES ('" + username + "','" + pass + "','" + name + "')";
+    var inserttablequery = "INSERT INTO Registration(username,********, name) VALUES ('" + username + "','" + pass + "','" + name + "')";
     console.log(inserttablequery);
     connection.query(inserttablequery, function(error, rows, fields) {
         if (error) {
@@ -173,15 +173,15 @@ router.post('/login', function(req, res) {
     }
 
     var connection = mysql.createConnection({
-        host: 'sanatom.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
+        host: '*******.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
         user: 'root',
-        password: 'password',
+        ********: '********',
         database: 'cmpe297'
     });
     var status;
     connection.connect();
     console.log(connection);
-    var queryString = "select username,password from Registration where username = '" + req.session.userName + "'";
+    var queryString = "select username,******** from Registration where username = '" + req.session.userName + "'";
     console.log(queryString);
     connection.query(queryString, function(err, rows, fields) {
         console.log("err" + err);
@@ -192,7 +192,7 @@ router.post('/login', function(req, res) {
                 title: 'Express'
             });
         }
-        var passHash = resRows[0].password;
+        var passHash = resRows[0].********;
         console.log(passHash);
         //  bcrypt.compare(pass, passHash, function(err, result) {
         //if(result)
@@ -218,9 +218,9 @@ console.log(resRows);
 router.get('/notes', function(req, res) {
     resRows = "error";
     var connection = mysql.createConnection({
-        host: 'sanatom.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
+        host: '*******.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
         user: 'root',
-        password: 'password',
+        ********: '********',
         database: 'cmpe297'
     });
     var status;
@@ -251,9 +251,9 @@ router.post('/notes', function(req, res) {
         var width = objArray[i].width;
         var height = objArray[i].height;
         var connection = mysql.createConnection({
-            host: 'sanatom.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
+            host: '*******.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
             user: 'root',
-            password: 'password',
+            ********: '********',
             database: 'cmpe297'
         });
         var status;
