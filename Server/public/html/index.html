@@ -55,31 +55,27 @@
             <div id="login" class="container">
                 <div class="row">
                     <div class="span12">
-                        <form method="POST" action="login">
                         <h2>Login or <a onclick="divToggle('signup','login');"><span id="signuptext">Signup</span></a></h2>
-                        <input type="text" name="userName" id="userName" placeholder="you@email.com" size="40" title="your email">
-                        <input type="password" name="pass" id="pass" placeholder="********" size="40" title="your password">
+                        <input type="text" name="email" placeholder="you@email.com" size="40" title="your email">
+                        <input type="password" name="password" placeholder="********" size="40" title="your password">
                         <input type="submit" value="Login">
-                        </form>
                     </div>
                 </div>
             </div>
             <div id="signup" class="container">
                 <div class="row">
                     <div class="span12">
-                        <form method="POST" action="register">
                         <h2><a onclick="divToggle('login','signup');"><span id="logintext">Login</span></a> or Signup</h2>
-                        <input type="text" id="flname" name="flname" placeholder="Your Name">
+                        <input type="text" name="name" placeholder="Your Name">
                         <br>
                         <br>
-                        <input type="text" name="userName" id="userName_r" placeholder="you@email.com" size="40" title="your email">
+                        <input type="text" name="email" placeholder="you@email.com" size="40" title="your email">
                         <br>
                         <br>
-                        <input type="password" name="pass" id="pass_r" placeholder="********" size="40" title="your password">
+                        <input type="password" name="password" placeholder="********" size="40" title="your password">
                         <br>
                         <br>
                         <input type="submit" value="SignUp" onclick="home.html">
-                            </form>
                     </div>
                 </div>
             </div>

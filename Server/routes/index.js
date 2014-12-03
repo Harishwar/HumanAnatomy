@@ -27,7 +27,7 @@ router.get('/home', function(req, res) {
 });
 
 router.get('/bodybrowser', function(req, res) {
-    res.render('bodybrowser', { title: 'Express' });
+    res.render('../public/html/bodybrowser.html');
 });
 
 router.get('/heartviewer', function(req, res) {
@@ -56,7 +56,7 @@ router.post('/register',function(req,res){
         bcrypt.hash(pass, salt, function(err, hash) {
             // Store hash in your password DB.
             var connection = mysql.createConnection({
-                host     : '*******.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
+                host     : 'sanatom.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
                 user     : 'root',
                 password : 'password',
                 database: 'cmpe297'
@@ -95,7 +95,7 @@ router.post('/login', function(req,res){
     }
 
     var connection = mysql.createConnection({
-        host     : '*******.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
+        host     : 'sanatom.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
         user     : 'root',
         password : 'password',
         database: 'cmpe297'
@@ -134,7 +134,7 @@ router.post('/login', function(req,res){
 router.get('/notes',function(req,res) {
     resRows = "error";
     var connection = mysql.createConnection({
-        host     : '*******.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
+        host     : 'sanatom.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
         user     : 'root',
         password : 'password',
         database: 'cmpe297'
@@ -168,7 +168,7 @@ router.post('/notes',function(req,res){
         var width = objArray[i].width;
         var height = objArray[i].height;
         var connection = mysql.createConnection({
-            host     : '*******.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
+            host     : 'sanatom.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
             user     : 'root',
             password : 'password',
             database: 'cmpe297'
