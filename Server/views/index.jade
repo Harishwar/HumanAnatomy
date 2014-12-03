@@ -42,7 +42,7 @@ html(lang="en")
                             span.icon-bar
                             span.icon-bar
                         h1.brand
-                            a(href="#top") HumanAnatomy
+                            a(href="/") HumanAnatomy
         #top
         // Login
         #contentwrap
@@ -56,9 +56,13 @@ html(lang="en")
                                 h2
                                     | Login or
                                     a(onclick="divToggle('signup','login');")
-                                        span#signuptext Signup
+                                        span#signuptext  Signup
                                 input#userName(type="text", name="userName", placeholder="you@email.com", size="40", title="your email")
+                                br
+                                br
                                 input#pass(type="password", name="pass", placeholder="********", size="40", title="your password")
+                                br
+                                br
                                 input(type="submit", value="Login")
                 #signup.container
                     .row
@@ -67,7 +71,7 @@ html(lang="en")
                                 h2
                                     a(onclick="divToggle('login','signup');")
                                         span#logintext Login
-                                    | or Signup
+                                    |  or Signup
                                 input#flname(type="text", name="flname", placeholder="Your Name")
                                 br
                                 br

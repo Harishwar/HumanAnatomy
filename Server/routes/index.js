@@ -22,6 +22,10 @@ router.get('/makemodels', function(req, res) {
     res.render('makemodels', { title: 'Express' });
 });
 
+router.get('/humanbody', function(req, res) {
+    res.render('../public/images/human_body.png');
+});
+
 router.get('/home', function(req, res) {
     res.render('home', { title: 'Express' });
 });

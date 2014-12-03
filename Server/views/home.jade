@@ -1,6 +1,3 @@
-//
-   Created by rajagopalan on 11/30/14.
-
 doctype html
 html(lang="en")
     head
@@ -43,7 +40,7 @@ html(lang="en")
                             span.icon-bar
                             span.icon-bar
                         h1.brand
-                            a(href="#top") HumanAnatomy
+                            a(href="home") HumanAnatomy
                         nav.pull-right.nav-collapse.collapse
                             ul#menu-main.nav
                                 li
@@ -52,6 +49,8 @@ html(lang="en")
                                     a(title="makemodels", href="makemodels") Body Browser
                                 li
                                     a(title="bodybrowser", href="bodybrowser") Make Models
+                                li
+                                    a(title="logout", href="/") Logout
         #top
         // Main View
         section#contentwrap
@@ -67,31 +66,31 @@ html(lang="en")
                                 h2 View Models
                             .entry-content
                                 p
-                                    | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                    | Rendering Wavefront OBJ files using Three.js.
                                 a.more-link(href="viewmodels") View Demo
                         // /.inside
                     .span4
                         .mask2
                             a(href="makemodels")
-                                img(src="images/image01.jpg", alt="")
+                                img(src="images/image02.png", alt="")
                         .inside
                             hgroup
-                                h2 Make Models
+                                h2 Make Notes
                             .entry-content
                                 p
-                                    | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                    | Add drawing and commenting to images on your Web page. Customize the model with notes.
                                 a.more-link(href="makemodels") View Demo
                         // /.inside
                     .span4
                         .mask2
                             a(href="bodybrowser")
-                                img(src="images/image01.jpg", alt="")
+                                img(src="images/image03.png", alt="")
                         .inside
                             hgroup
                                 h2 Body Browser
                             .entry-content
                                 p
-                                    | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                    | WebGL based 3D Human Anatomy using Google Open 3D Viewer.
                                 a.more-link(href="bodybrowser") View Demo
                         // /.inside
                 // /.row

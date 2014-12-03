@@ -5,7 +5,7 @@ doctype html
 html(lang="en")
     head
         meta(charset="utf-8")
-        title Human Anatomy - Make Models
+        title Human Anatomy - Make Notes
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(name="description", content="")
         meta(name="author", content="")
@@ -112,7 +112,7 @@ html(lang="en")
             for(var i=0; i<jsonResponseArray.length;i++)
             {
             var myAnnot={
-                                   src:'http://localhost:3000/images/human_body.png',
+                                   src:'humanbody',
                                    shapes:[{type: 'rect',geometry:{}}]};
             myAnnot.text=jsonResponseArray[i].message;
             myAnnot.shapes[0].geometry.x=jsonResponseArray[i].xcoord;
@@ -136,7 +136,7 @@ html(lang="en")
                             span.icon-bar
                             span.icon-bar
                         h1.brand
-                            a(href="#top") HumanAnatomy
+                            a(href="home") HumanAnatomy
                         nav.pull-right.nav-collapse.collapse
                             ul#menu-main.nav
                                 li
@@ -144,19 +144,21 @@ html(lang="en")
                                 li
                                     a(title="makemodels", href="makemodels") Body Browser
                                 li
-                                    a(title="bodybrowser", href="bodybrowser") Make Models
+                                    a(title="bodybrowser", href="bodybrowser") Make Notes
+                                li
+                                    a(title="logout", href="index") Logout
         #top
         // Main View
         section#contentwrap
             .container
-                h1#headline Make Models
-        hr
+                h1#headline Make Notes
 
         label#userName userName
         input#submit(type="submit", name="submit", value="Submit", onclick="submitAnnotations()")
         //button(onclick="getData()") Read
         img#sample.annotatable(src="http://localhost:3000/images/human_body.png", alt="")
 
+        hr
 
         // Footer
         section#footer
