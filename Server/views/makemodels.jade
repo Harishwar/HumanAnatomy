@@ -112,7 +112,7 @@ html(lang="en")
             for(var i=0; i<jsonResponseArray.length;i++)
             {
             var myAnnot={
-                                   src:'http://localhost:3000/images/human_body.png',
+                                   src:'/images/human_body.png',
                                    shapes:[{type: 'rect',geometry:{}}]};
             myAnnot.text=jsonResponseArray[i].message;
             myAnnot.shapes[0].geometry.x=jsonResponseArray[i].xcoord;
@@ -159,7 +159,7 @@ html(lang="en")
 
 
         //button(onclick="getData()") Read
-        img#sample.annotatable(src="http://localhost:3000/images/human_body.png", alt="")
+        img#sample.annotatable(src="/images/human_body.png", alt="")
         input#submit.pull-right.submitbutton(type="submit", name="submit", value="Submit", onclick="submitAnnotations()")
 
         hr

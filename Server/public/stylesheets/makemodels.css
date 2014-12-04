@@ -317,7 +317,7 @@ section#contentwrap .align {
     text-transform: none;
     right: 80px;
     bottom: 40px;
-    position: absolute;
+    position: fixed;
     background: #f0bf00 !important;
     border-radius: 3px;
     -moz-border-radius: 3px;
