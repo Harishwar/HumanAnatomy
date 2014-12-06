@@ -99,7 +99,7 @@ router.get('/bodyviewer', function(req, res) {
 
 });
 
-router.post('/register', function(req, res) {
+/* router.post('/register', function(req, res) {
     var username = req.body.userName_r;
     var pass = req.body.pass_r;
     var name = req.body.flname;
@@ -150,9 +150,9 @@ router.post('/register', function(req, res) {
             title: "Express"
         });
     }
-});
+}); */
 
-router.post('/login', function(req, res) {
+/*router.post('/login', function(req, res) {
     var username = req.body.userName;
     var pass = req.body.pass;
     if (username == undefined || username == "" || pass == undefined || pass == "") {
@@ -204,7 +204,7 @@ router.post('/login', function(req, res) {
     });
     console.log(resRows);
 
-});
+});*/
 
 router.get('/notes', function(req, res) {
     resRows = "error";
@@ -282,4 +282,102 @@ router.get('/logout', function(req, res) {
     });
 
 });
+
+router.post('/login', function(req, res) {
+    var username = req.body.userName;
+    var pass = req.body.pass;
+    if (username == undefined || username == "" || pass == undefined || pass == "") {
+        res.render("index", {
+            title: 'Express'
+        });
+        return;
+    }
+
+    var connection = mysql.createConnection({
+        host: 'sanatom.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
+        user: 'root',
+        password: 'password',
+        database: 'cmpe297'
+    });
+    var status;
+    connection.connect();
+    console.log(connection);
+    var queryString = "select username,password from Registration where username = '" + username + "'";
+    console.log(queryString);
+    connection.query(queryString, function(err, rows, fields) {
+        console.log("err" + err);
+        console.log(rows);
+        resRows = rows;
+        if (resRows.length == 0) {
+            res.render("index", {
+                title: 'Express'
+            });
+        }
+        var passHash = resRows[0].password;
+        console.log(passHash);
+        if (passHash == pass) {
+            sess = req.session;
+            sess.userName = username;
+            res.render("home", {
+                title: 'Express'
+            });
+        } else {
+
+            res.render("index", {
+                title: 'Express'
+            });
+            // res.json({"error":"2", "message":"incorrect credentials"});
+        }
+    });
+});
+
+router.post('/register', function(req, res) {
+    var username = req.body.userName_r;
+    var pass = req.body.pass_r;
+    var name = req.body.flname;
+    if (username == undefined || username == "" || pass == undefined || pass == "") {
+
+        res.render("index", {
+            title: 'Express'
+        });
+        return;
+    }
+    var status = 200;
+    // Store hash in your password DB.
+    var connection = mysql.createConnection({
+        host: 'sanatom.cvigtrqbp4hp.us-west-1.rds.amazonaws.com',
+        user: 'root',
+        password: 'password',
+        database: 'cmpe297'
+    });
+    connection.connect();
+
+    var inserttablequery = "INSERT INTO Registration(username,password, name) VALUES ('" + username + "','" + pass + "','" + name + "')";
+    console.log(inserttablequery);
+    connection.query(inserttablequery, function(error, rows, fields) {
+        if (error) {
+            return console.log(error);
+            res.send(error.body)
+            status = 500;
+            return;
+        }
+    });
+    if (status == 200) {
+        //localStorage.setItem("session_key","1");
+        //localStorage.setItem("username",username);
+        sess = req.session;
+        sess.userName = username;
+        console.log("sess username" + sess.userName);
+        res.render("index", {
+            title: "Express"
+        });
+    } else {
+
+        res.render("error", {
+            title: "Express"
+        });
+    }
+});
+
+
 module.exports = router;
